@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Generator Label Gizi - A4 Landscape 8 Label</title>
+<title>Generator Label Gizi - F4 Landscape 8 Label</title>
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Inter,Segoe UI,Arial,Helvetica,sans-serif;background:#f3f6fa;color:#10203a}
@@ -116,13 +116,13 @@ button:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(15,35,65,.12)
  .history-panel{grid-template-columns:1fr}
 }
 @media(max-width:600px){.form-grid{grid-template-columns:1fr}}
-@page{size:A4 landscape;margin:0}
+@page{size:330mm 215mm;margin:0}
 @media print{
  body{background:#fff}
  .no-print{display:none!important}
  .app{max-width:none;margin:0;padding:0}
  .sheet-wrap{padding:0;background:#fff;overflow:visible}
- .sheet{margin:0;width:297mm;height:210mm;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(4,minmax(0,1fr));gap:1mm;padding:2mm;box-sizing:border-box;overflow:hidden;page-break-after:always;break-inside:avoid}
+ .sheet{margin:0;width:330mm;height:215mm;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(4,minmax(0,1fr));gap:1mm;padding:4mm;box-sizing:border-box;overflow:hidden;page-break-after:always;break-inside:avoid}
  .sheet:last-child{page-break-after:auto}
 }
 </style>
@@ -156,7 +156,7 @@ button:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(15,35,65,.12)
   </div>
   <div class="panel no-print editor-panel">
     <h1>Generator Label Gizi</h1>
-    <p class="subtitle">A4 Landscape — 8 label per lembar (2 × 4) • Desain label menu & nilai gizi</p>
+    <p class="subtitle">F4 Landscape — 8 label per lembar (2 × 4) • Desain label menu & nilai gizi</p>
 
     <div class="form-grid">
       <div class="field full">
@@ -228,7 +228,7 @@ button:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(15,35,65,.12)
       <button class="btn-secondary" onclick="window.print()">Cetak Label</button>
       <button class="btn-light" onclick="resetForm()">Reset</button>
     </div>
-    <div class="print-info">Tips cetak: pilih ukuran kertas A4, orientasi Landscape, Scale 100% / Actual Size, dan matikan header/footer browser.</div>
+    <div class="print-info">Tips cetak: pilih ukuran kertas F4, orientasi Landscape, Scale 100% / Actual Size, dan matikan header/footer browser.</div>
   </div>
 
   <div class="panel no-print">
