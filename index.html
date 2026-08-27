@@ -311,6 +311,11 @@ function renderHistory(){
     button.onclick=()=>applySnapshot(entry.data);
     actions.appendChild(button);
     if(!document.body.classList.contains('public-mode')){
+      const share=document.createElement('button');
+      share.className='btn-light';
+      share.textContent='Bagikan';
+      share.onclick=()=>shareHistory(index);
+      actions.appendChild(share);
       const rename=document.createElement('button');
       rename.className='btn-light';
       rename.textContent='Edit Nama';
@@ -383,12 +388,13 @@ function decodeHistory(value){
   const padded=value.replace(/-/g,'+').replace(/_/g,'/')+'==='.slice((value.length+3)%4);
   return JSON.parse(decodeURIComponent(escape(atob(padded))));
 }
-function shareHistory(){
+function shareHistory(index=0){
   if(!editHistory.length){
     saveHistory();
     if(!editHistory.length) return;
   }
-  const url=`${location.origin}${location.pathname}#history=${encodeHistory(editHistory)}`;
+  const entry=editHistory[index] || editHistory[0];
+  const url=`${location.origin}${location.pathname}#history=${encodeHistory(entry)}`;
   navigator.clipboard.writeText(url).then(
     ()=>{document.getElementById('historyStatus').textContent='Tautan riwayat berhasil disalin.'},
     ()=>window.prompt('Salin tautan riwayat ini:',url)
@@ -399,8 +405,9 @@ function loadPublicHistory(){
   if(!match) return false;
   try {
     const shared=decodeHistory(match[1]);
-    if(!Array.isArray(shared) || !shared.length) throw new Error('Format riwayat tidak valid');
-    editHistory=shared.slice(0,50);
+    const entries=Array.isArray(shared) ? shared : [shared];
+    if(!entries.length || !entries[0] || !entries[0].data) throw new Error('Format riwayat tidak valid');
+    editHistory=entries.slice(0,50);
     document.body.classList.add('public-mode');
     renderHistory();
     applySnapshot(editHistory[0].data);
